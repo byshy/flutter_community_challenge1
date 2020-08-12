@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import './provider/cart.dart';
 import './provider/products.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -16,30 +17,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers:[
+        providers: [
           ChangeNotifierProvider<Products>(
-            create:(context)=> Products(),
-
+            create: (context) => Products(),
           ),
           ChangeNotifierProvider<Cart>(
-            create:(context)=> Cart(),
-
+            create: (context) => Cart(),
           ),
           ChangeNotifierProvider<ModalHud>(
-            create:(context)=> ModalHud(),
-
+            create: (context) => ModalHud(),
           )
-        ],child: MaterialApp(
-      initialRoute: HomeScreen.route,
-      routes: {
-        CartScreen.route: (context) => CartScreen(),
-        HomeScreen.route: (context) => HomeScreen(),
-        ProductInfoScreen.route: (context) => ProductInfoScreen(),
-
-      },
-    ))
-    ;
+        ],
+        child: MaterialApp(
+          initialRoute: HomeScreen.route,
+          routes: {
+            CartScreen.route: (context) => CartScreen(),
+            HomeScreen.route: (context) => HomeScreen(),
+            ProductInfoScreen.route: (context) => ProductInfoScreen(),
+          },
+        ));
   }
 }
-
-
